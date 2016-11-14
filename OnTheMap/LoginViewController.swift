@@ -27,14 +27,14 @@ class LoginViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextField.text {
             OTMClient.sharedInstance().taskForPOSTMethod(email, password) {(success, error) in
                 guard error == nil else {
-                    self.displayAlert("No Internet")
+                    self.displayAlert("Please make sure you are connected to internet before you proceed.")
                     return
                 }
                 if (success) {
                     self.displayAlert("successful")
                 }
                 else {
-                    self.displayAlert("unsuccessful")
+                    self.displayAlert("Incorrect Credentials")
                 }
             }
         } else {
