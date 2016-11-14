@@ -87,6 +87,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4XO-r4-l7B">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -94,8 +97,10 @@
                             <constraint firstItem="7pD-QZ-eqY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="0da-63-81S"/>
                             <constraint firstItem="kyI-Td-qyM" firstAttribute="top" secondItem="7pD-QZ-eqY" secondAttribute="bottom" id="1Rx-hE-sef"/>
                             <constraint firstItem="Ho7-Di-jjd" firstAttribute="trailing" secondItem="kyI-Td-qyM" secondAttribute="trailing" id="1l9-Fh-rwW"/>
+                            <constraint firstItem="4XO-r4-l7B" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3xF-7l-uK6"/>
                             <constraint firstItem="Ho7-Di-jjd" firstAttribute="leading" secondItem="kyI-Td-qyM" secondAttribute="leading" id="4OS-eW-RAO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kyI-Td-qyM" secondAttribute="bottom" constant="456" id="5pe-cL-zGd"/>
+                            <constraint firstItem="4XO-r4-l7B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9G8-Qk-OfR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7pD-QZ-eqY" secondAttribute="bottom" constant="486" id="EO6-xb-2vF"/>
                             <constraint firstItem="nrB-I9-LVM" firstAttribute="top" secondItem="Ho7-Di-jjd" secondAttribute="bottom" constant="10" id="GSh-X6-s2E"/>
                             <constraint firstItem="7pD-QZ-eqY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kvx-4N-B8I"/>
@@ -115,6 +120,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Ho7-Di-jjd" id="Fko-Wg-nrR"/>
+                        <outlet property="loginActivityIndicator" destination="4XO-r4-l7B" id="Sds-MR-fH9"/>
                         <outlet property="passwordTextField" destination="nrB-I9-LVM" id="KUY-ex-QY2"/>
                     </connections>
                 </viewController>

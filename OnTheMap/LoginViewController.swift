@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: CredentialTextField!
     @IBOutlet weak var passwordTextField: CredentialTextField!
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginWithUdacity(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text {
+            loginActivityIndicator.startAnimating()
             OTMClient.sharedInstance().taskForPOSTMethod(email, password) {(success, error) in
                 guard error == nil else {
                     self.displayAlert("Please make sure you are connected to internet before you proceed.")
@@ -62,6 +64,7 @@ private extension LoginViewController {
         alertController.addAction(okAction)
         
         DispatchQueue.main.async {
+            self.loginActivityIndicator.stopAnimating()
             self.present(alertController, animated: true, completion: nil)
         }
     }
