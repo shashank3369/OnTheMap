@@ -15,6 +15,9 @@
 		8A1F5C6C1DD8F20F0066A085 /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C6B1DD8F20F0066A085 /* OnTheMapTests.swift */; };
 		8A1F5C771DD8F20F0066A085 /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C761DD8F20F0066A085 /* OnTheMapUITests.swift */; };
 		8A1F5C851DD93EE90066A085 /* CredentialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C841DD93EE90066A085 /* CredentialTextField.swift */; };
+		8A1F5C871DD968CA0066A085 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C861DD968CA0066A085 /* OTMClient.swift */; };
+		8A1F5C891DD968D50066A085 /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C881DD968D50066A085 /* OTMConstants.swift */; };
+		8A1F5C8B1DD96A4E0066A085 /* OTMConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C8A1DD96A4E0066A085 /* OTMConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		8A1F5C761DD8F20F0066A085 /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		8A1F5C781DD8F20F0066A085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A1F5C841DD93EE90066A085 /* CredentialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialTextField.swift; sourceTree = "<group>"; };
+		8A1F5C861DD968CA0066A085 /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		8A1F5C881DD968D50066A085 /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
+		8A1F5C8A1DD96A4E0066A085 /* OTMConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 			children = (
 				8A1F5C561DD8F20F0066A085 /* AppDelegate.swift */,
 				8A1F5C581DD8F20F0066A085 /* LoginViewController.swift */,
+				8A1F5C861DD968CA0066A085 /* OTMClient.swift */,
+				8A1F5C8A1DD96A4E0066A085 /* OTMConvenience.swift */,
+				8A1F5C881DD968D50066A085 /* OTMConstants.swift */,
 				8A1F5C5A1DD8F20F0066A085 /* Main.storyboard */,
 				8A1F5C841DD93EE90066A085 /* CredentialTextField.swift */,
 				8A1F5C5D1DD8F20F0066A085 /* Assets.xcassets */,
@@ -266,7 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A1F5C851DD93EE90066A085 /* CredentialTextField.swift in Sources */,
+				8A1F5C871DD968CA0066A085 /* OTMClient.swift in Sources */,
 				8A1F5C591DD8F20F0066A085 /* LoginViewController.swift in Sources */,
+				8A1F5C891DD968D50066A085 /* OTMConstants.swift in Sources */,
+				8A1F5C8B1DD96A4E0066A085 /* OTMConvenience.swift in Sources */,
 				8A1F5C571DD8F20F0066A085 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextField: CredentialTextField!
+    @IBOutlet weak var passwordTextField: CredentialTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,11 +23,27 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func loginWithUdacity(_ sender: Any) {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            OTMClient.sharedInstance().taskForPOSTMethod(email, password) {(success, error) in
+                guard error == nil else {
+                    self.displayAlert("No Internet")
+                    return
+                }
+                if (success) {
+                    self.displayAlert("successful")
+                }
+                else {
+                    self.displayAlert("unsuccessful")
+                }
+            }
+        } else {
+            displayAlert("Please enter your email and password before clicking login")
+        }
+    }
 }
 
 private extension LoginViewController {
-    
     func configureBackground() {
         let backgroundGradient = CAGradientLayer()
         let colorTop = UIColor(red: 0.925, green: 0.435, blue: 0.4, alpha: 1.0).cgColor
@@ -34,6 +51,19 @@ private extension LoginViewController {
         backgroundGradient.colors = [colorTop, colorBottom]
         backgroundGradient.frame = view.bounds
         view.layer.insertSublayer(backgroundGradient, at: 0)
+    }
+    
+    func displayAlert(_ errorString: String) {
+        let alertController = UIAlertController(title: "Message", message: errorString, preferredStyle: .alert)
+    
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 

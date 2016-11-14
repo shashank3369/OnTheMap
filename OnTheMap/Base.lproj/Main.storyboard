@@ -76,6 +76,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginWithUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yG6-v9-Hkh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bw-FD-SUN">
                                 <rect key="frame" x="16" y="375" width="343" height="40"/>
@@ -111,7 +114,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="Ho7-Di-jjd" id="fpg-7m-pUG"/>
+                        <outlet property="emailTextField" destination="Ho7-Di-jjd" id="Fko-Wg-nrR"/>
+                        <outlet property="passwordTextField" destination="nrB-I9-LVM" id="KUY-ex-QY2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
