@@ -43,6 +43,21 @@ class OTMClient: NSObject {
         task.resume()
     }
 
+    func getStudentInfo(completionHandlerForGet: @escaping (_ studentInfo: [StudentInformation]?, _ error: NSError?) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "\(OTMClient.Constants.StudentsURL)?limit=100")!)
+        request.addValue(OTMClient.ParameterValues.ApplicationID, forHTTPHeaderField: OTMClient.ParameterKeys.ApplicationID)
+        request.addValue(OTMClient.ParameterValues.ApiKey, forHTTPHeaderField: OTMClient.ParameterKeys.ApiKey)
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error...
+                completionHandlerForGet(nil, error as NSError?)
+                return
+            }
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
+            completionHandlerForGet(nil, nil)
+        }
+        task.resume()
+    }
+    
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ success: Bool, _ error: NSError?) -> Void) {
         
         let dataLength = data.count
@@ -56,7 +71,6 @@ class OTMClient: NSObject {
         }
         completionHandlerForConvertData(false, nil)
     }
-    
     
     func convertStringToDictionary(text: String) -> [String:AnyObject]? {
         if let data = text.data(using: String.Encoding.utf8) {

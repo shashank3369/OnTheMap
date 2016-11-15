@@ -33,7 +33,9 @@ class LoginViewController: UIViewController {
                     return
                 }
                 if (success) {
-                    self.displayAlert("successful")
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "login", sender: self)
+                    }
                 }
                 else {
                     self.displayAlert("Incorrect Credentials")
