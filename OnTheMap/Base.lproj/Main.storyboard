@@ -140,14 +140,28 @@
                     <view key="view" contentMode="scaleToFill" id="x7I-CR-yDo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ewr-0m-P4X">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ewr-0m-P4X" firstAttribute="leading" secondItem="x7I-CR-yDo" secondAttribute="leading" id="bnC-60-oqz"/>
+                            <constraint firstAttribute="trailing" secondItem="Ewr-0m-P4X" secondAttribute="trailing" id="fg0-8O-YVj"/>
+                            <constraint firstItem="Ewr-0m-P4X" firstAttribute="top" secondItem="W6d-Zl-KKf" secondAttribute="bottom" id="kBl-96-UPv"/>
+                            <constraint firstItem="Ewr-0m-P4X" firstAttribute="bottom" secondItem="Ewk-Hx-gvR" secondAttribute="top" id="s8P-h0-9dP"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" selectedImage="map" id="ily-gP-lei"/>
                     <navigationItem key="navigationItem" id="P8B-Px-7UC"/>
+                    <connections>
+                        <outlet property="mapView" destination="Ewr-0m-P4X" id="4hM-ce-MbU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdh-6G-M23" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3098" y="-172"/>
+            <point key="canvasLocation" x="3096.8000000000002" y="-172.26386806596702"/>
         </scene>
         <!--List-->
         <scene sceneID="D1B-b2-Lil">
@@ -162,7 +176,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUS-aP-Jz8" id="PUB-Dd-J8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -203,6 +217,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qvT-yg-HIJ"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vIU-uG-YAc">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

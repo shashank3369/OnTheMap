@@ -48,12 +48,20 @@ class OTMClient: NSObject {
         request.addValue(OTMClient.ParameterValues.ApplicationID, forHTTPHeaderField: OTMClient.ParameterKeys.ApplicationID)
         request.addValue(OTMClient.ParameterValues.ApiKey, forHTTPHeaderField: OTMClient.ParameterKeys.ApiKey)
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil { // Handle error...
+            guard error == nil else { // Handle error...
                 completionHandlerForGet(nil, error as NSError?)
                 return
             }
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
-            completionHandlerForGet(nil, nil)
+            
+            let resultString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!
+            let result = self.convertStringToDictionary(text: (resultString as String))
+            guard let studentsInformation = result?["results"] as? [[String: AnyObject]] else {
+                completionHandlerForGet(nil, error as NSError?)
+                return
+            }
+            
+            StudentInformation.allStudentInformation = StudentInformation.convertFromDictionaries(array: studentsInformation)
+            completionHandlerForGet(StudentInformation.allStudentInformation, nil)
         }
         task.resume()
     }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,12 +20,11 @@ class MapViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
-            if (error == nil && studentInfo == nil) {
-                print ("success")
-            }
-            else {
+            guard error == nil else {
                 print ("failure")
+                return
             }
+            print (studentInfo)
         }
 
     }
