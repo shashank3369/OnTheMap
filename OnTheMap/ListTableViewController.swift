@@ -24,7 +24,8 @@ class ListTableViewController: UITableViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
             guard error == nil else {
                 print ("failure")
