@@ -17,7 +17,7 @@ struct StudentInformation {
     var uniqueKey: String
     var firstName: String
     var lastName: String
-    var mapString: String
+    var mapString: String?
     var mediaURL: String
     var latitude: CLLocationDegrees = CLLocationDegrees()
     var longitude: CLLocationDegrees = CLLocationDegrees()
@@ -26,7 +26,7 @@ struct StudentInformation {
     init(dictionary: [String : AnyObject]) {
         objectId = dictionary[OTMClient.JSONResponseKeys.ObjectID] as! String
         uniqueKey = dictionary[OTMClient.JSONResponseKeys.UniqueKey] as! String
-        mapString = dictionary[OTMClient.JSONResponseKeys.MapString] as! String
+        mapString = dictionary[OTMClient.JSONResponseKeys.MapString] as? String
         
         firstName = dictionary[OTMClient.JSONResponseKeys.FirstName] as! String
         lastName = dictionary[OTMClient.JSONResponseKeys.LastName] as! String

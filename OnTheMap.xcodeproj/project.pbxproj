@@ -17,6 +17,7 @@
 		8A1F5C851DD93EE90066A085 /* CredentialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C841DD93EE90066A085 /* CredentialTextField.swift */; };
 		8A1F5C871DD968CA0066A085 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C861DD968CA0066A085 /* OTMClient.swift */; };
 		8A1F5C891DD968D50066A085 /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C881DD968D50066A085 /* OTMConstants.swift */; };
+		8A96D3391DDD60F00011AE48 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A96D3381DDD60F00011AE48 /* ListTableViewCell.swift */; };
 		8ABCD59A1DDACF0A007CB893 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABCD5991DDACF0A007CB893 /* StudentInformation.swift */; };
 		8ABCD59C1DDAD2DE007CB893 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABCD59B1DDAD2DE007CB893 /* MapViewController.swift */; };
 		8ABCD59E1DDAD575007CB893 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABCD59D1DDAD575007CB893 /* ListTableViewController.swift */; };
@@ -56,6 +57,7 @@
 		8A1F5C841DD93EE90066A085 /* CredentialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialTextField.swift; sourceTree = "<group>"; };
 		8A1F5C861DD968CA0066A085 /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
 		8A1F5C881DD968D50066A085 /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
+		8A96D3381DDD60F00011AE48 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		8ABCD5991DDACF0A007CB893 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentInformation.swift; path = ../StudentInformation.swift; sourceTree = "<group>"; };
 		8ABCD59B1DDAD2DE007CB893 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
 		8ABCD59D1DDAD575007CB893 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		8A1F5C8C1DD978190066A085 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A96D3381DDD60F00011AE48 /* ListTableViewCell.swift */,
 				8ABCD5991DDACF0A007CB893 /* StudentInformation.swift */,
 				8A1F5C881DD968D50066A085 /* OTMConstants.swift */,
 				8A1F5C861DD968CA0066A085 /* OTMClient.swift */,
@@ -317,6 +320,7 @@
 				8A1F5C871DD968CA0066A085 /* OTMClient.swift in Sources */,
 				8ABCD59E1DDAD575007CB893 /* ListTableViewController.swift in Sources */,
 				8A1F5C591DD8F20F0066A085 /* LoginViewController.swift in Sources */,
+				8A96D3391DDD60F00011AE48 /* ListTableViewCell.swift in Sources */,
 				8A1F5C891DD968D50066A085 /* OTMConstants.swift in Sources */,
 				8A1F5C571DD8F20F0066A085 /* AppDelegate.swift in Sources */,
 				8ABCD59C1DDAD2DE007CB893 /* MapViewController.swift in Sources */,

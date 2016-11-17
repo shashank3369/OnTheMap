@@ -167,18 +167,44 @@
         <scene sceneID="D1B-b2-Lil">
             <objects>
                 <tableViewController id="1Wd-9g-iGd" customClass="ListTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HsV-vh-cje">
+                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HsV-vh-cje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MUS-aP-Jz8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="listTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="listTableCell" id="MUS-aP-Jz8" customClass="ListTableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUS-aP-Jz8" id="PUB-Dd-J8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Eb0-1H-RM2">
+                                            <rect key="frame" x="8" y="1" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="Siq-sg-W0e"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFF-rP-jNz">
+                                            <rect key="frame" x="56" y="1" width="311" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pFF-rP-jNz" firstAttribute="bottom" secondItem="Eb0-1H-RM2" secondAttribute="bottom" id="Ln2-gi-mcq"/>
+                                        <constraint firstItem="Eb0-1H-RM2" firstAttribute="top" secondItem="PUB-Dd-J8F" secondAttribute="topMargin" constant="-7" id="Svc-Ed-0Mb"/>
+                                        <constraint firstItem="pFF-rP-jNz" firstAttribute="top" secondItem="Eb0-1H-RM2" secondAttribute="top" id="XZJ-kt-FUH"/>
+                                        <constraint firstItem="pFF-rP-jNz" firstAttribute="leading" secondItem="Eb0-1H-RM2" secondAttribute="trailing" constant="8" symbolic="YES" id="euM-XC-yFJ"/>
+                                        <constraint firstItem="Eb0-1H-RM2" firstAttribute="centerY" secondItem="PUB-Dd-J8F" secondAttribute="centerY" id="hbB-QH-W21"/>
+                                        <constraint firstItem="pFF-rP-jNz" firstAttribute="trailing" secondItem="PUB-Dd-J8F" secondAttribute="trailingMargin" id="kAb-lU-FZQ"/>
+                                        <constraint firstItem="Eb0-1H-RM2" firstAttribute="leading" secondItem="PUB-Dd-J8F" secondAttribute="leadingMargin" id="zOb-1T-xz8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="pFF-rP-jNz" id="oYU-6c-wXF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -190,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvb-v9-Zk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="510"/>
+            <point key="canvasLocation" x="3096.8000000000002" y="509.59520239880067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Nd-mI-VH1">
@@ -234,6 +260,7 @@
     <resources>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
 </document>

@@ -18,7 +18,7 @@ extension OTMClient {
         static let Longitude = "longitude"
         static let MapString = "mapString"
         static let MediaUrl = "mediaURL"
-        static let ObjectID = "objectID"
+        static let ObjectID = "objectId"
         static let UniqueKey = "uniqueKey"
         static let Results = "results"
     }

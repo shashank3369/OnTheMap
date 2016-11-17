@@ -44,7 +44,7 @@ class OTMClient: NSObject {
     }
 
     func getStudentInfo(completionHandlerForGet: @escaping (_ studentInfo: [StudentInformation]?, _ error: NSError?) -> Void) {
-        let request = NSMutableURLRequest(url: URL(string: "\(OTMClient.Constants.StudentsURL)?limit=100")!)
+        let request = NSMutableURLRequest(url: URL(string: "\(OTMClient.Constants.StudentsURL)?limit=100&order=-updatedAt")!)
         request.addValue(OTMClient.ParameterValues.ApplicationID, forHTTPHeaderField: OTMClient.ParameterKeys.ApplicationID)
         request.addValue(OTMClient.ParameterValues.ApiKey, forHTTPHeaderField: OTMClient.ParameterKeys.ApiKey)
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
