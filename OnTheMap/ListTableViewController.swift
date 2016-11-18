@@ -16,11 +16,13 @@ class ListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
             guard error == nil else {
-                print ("failure")
+                self.showError(errorString: "Cannot load student information.")
                 return
             }
             self.studentList = studentInfo
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         setupNavBar()
     }
@@ -28,6 +30,9 @@ class ListTableViewController: UITableViewController {
     func setupNavBar() {
         self.parent?.navigationItem.hidesBackButton = true
         self.parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
+        let newStudent = UIBarButtonItem(image: UIImage(named: "pin"), style: .plain, target: self, action: #selector(addStudent))
+        self.parent?.navigationItem.setRightBarButtonItems([refreshButton,newStudent], animated: false)
         self.parent?.navigationItem.title = "On The Map"
     }
     
@@ -35,11 +40,13 @@ class ListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
             guard error == nil else {
-                print ("failure")
+                self.showError(errorString: "Cannot load student information.")
                 return
             }
             self.studentList = studentInfo
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -81,6 +88,7 @@ class ListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let urlString = self.studentList?[indexPath.row].mediaURL else {
+            self.showError(errorString: "No url for the student exists")
             return
         }
         
@@ -92,12 +100,40 @@ class ListTableViewController: UITableViewController {
     func logout () {
         OTMClient.sharedInstance().deleteSession { (success, error) in
             guard error == nil else {
-                
+                self.showError(errorString: "Not able to logout")
                 return
             }
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "unwindToLogin", sender: self)
             }
+        }
+    }
+    
+    func reload() {
+        OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
+            guard error == nil else {
+                self.showError(errorString: "Having trouble refreshing student information.")
+                return
+            }
+            self.studentList = studentInfo
+            self.tableView.reloadData()
+        }
+    }
+    
+    func addStudent() {
+        
+    }
+    
+    func showError(errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }

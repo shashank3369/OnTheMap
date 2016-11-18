@@ -24,6 +24,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func setupNavBar() {
         self.parent?.navigationItem.hidesBackButton = true
         self.parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
+        let newStudent = UIBarButtonItem(image: UIImage(named: "pin"), style: .plain, target: self, action: #selector(addStudent))
+        self.parent?.navigationItem.setRightBarButtonItems([refreshButton,newStudent], animated: false)
         self.parent?.navigationItem.title = "On The Map"
     }
 
@@ -31,10 +34,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
             guard error == nil else {
-                print ("failure")
+                self.showError(errorString: "Not able to load studnet information")
                 return
             }
-
             self.studentList = studentInfo
             self.loadAnnotations(self.studentList!)
         }
@@ -72,6 +74,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func loadAnnotations(_ studentInfo: [StudentInformation]) {
+        for annotation in mapView.annotations {
+            mapView.removeAnnotation(annotation)
+        }
         var annotations = [MKPointAnnotation]()
         for student in studentInfo {
             
@@ -96,13 +101,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         // When the array is complete, we add the annotations to the map.
-        self.mapView.addAnnotations(annotations)
+        DispatchQueue.main.async {
+            self.mapView.addAnnotations(annotations)
+        }
     }
     
     func logout () {
         OTMClient.sharedInstance().deleteSession { (success, error) in
             guard error == nil else {
-                
+                self.showError(errorString: "Not able to logout")
                 return
             }
             DispatchQueue.main.async {
@@ -110,5 +117,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-
+    
+    func reload() {
+        OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
+            guard error == nil else {
+                self.showError(errorString: "Having trouble refreshing student information.")
+                return
+            }
+            self.studentList = studentInfo
+            self.loadAnnotations(self.studentList!)
+        }
+    }
+    
+    func showError(errorString: String) {
+        let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func addStudent() {
+        
+    }
 }
