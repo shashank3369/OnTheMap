@@ -43,6 +43,29 @@ class OTMClient: NSObject {
         task.resume()
     }
 
+    func deleteSession(completionHandlerForDelete: @escaping (_ success: Bool?, _ error: NSError?)->Void) {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error…
+                completionHandlerForDelete(nil, error as? NSError)
+                return
+            }
+            completionHandlerForDelete(true, nil)
+        }
+        task.resume()
+    }
+    
+    
     func getStudentInfo(completionHandlerForGet: @escaping (_ studentInfo: [StudentInformation]?, _ error: NSError?) -> Void) {
         let request = NSMutableURLRequest(url: URL(string: "\(OTMClient.Constants.StudentsURL)?limit=100&order=-updatedAt")!)
         request.addValue(OTMClient.ParameterValues.ApplicationID, forHTTPHeaderField: OTMClient.ParameterKeys.ApplicationID)

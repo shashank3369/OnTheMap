@@ -22,8 +22,15 @@ class ListTableViewController: UITableViewController {
             self.studentList = studentInfo
             self.tableView.reloadData()
         }
+        setupNavBar()
     }
 
+    func setupNavBar() {
+        self.parent?.navigationItem.hidesBackButton = true
+        self.parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        self.parent?.navigationItem.title = "On The Map"
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
@@ -82,5 +89,15 @@ class ListTableViewController: UITableViewController {
         }
     }
     
-
+    func logout () {
+        OTMClient.sharedInstance().deleteSession { (success, error) in
+            guard error == nil else {
+                
+                return
+            }
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+            }
+        }
+    }
 }

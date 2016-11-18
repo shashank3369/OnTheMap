@@ -17,8 +17,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         configureBackground()
+        loginActivityIndicator.hidesWhenStopped = true
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loginActivityIndicator.stopAnimating()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,6 +50,8 @@ class LoginViewController: UIViewController {
             displayAlert("Please enter your email and password before clicking login")
         }
     }
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
 }
 
 private extension LoginViewController {

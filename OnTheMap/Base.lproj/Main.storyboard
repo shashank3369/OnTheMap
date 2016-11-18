@@ -157,9 +157,11 @@
                     <navigationItem key="navigationItem" id="P8B-Px-7UC"/>
                     <connections>
                         <outlet property="mapView" destination="Ewr-0m-P4X" id="4hM-ce-MbU"/>
+                        <segue destination="B3H-6F-G0p" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="CrF-D7-Cbv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdh-6G-M23" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="B3H-6F-G0p" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3096.8000000000002" y="-172.26386806596702"/>
         </scene>
@@ -176,7 +178,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUS-aP-Jz8" id="PUB-Dd-J8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Eb0-1H-RM2">
@@ -213,8 +215,12 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="list" selectedImage="list" id="Kqq-tu-spp"/>
+                    <connections>
+                        <segue destination="sKE-Is-xdi" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="Br0-mt-0TB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvb-v9-Zk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sKE-Is-xdi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3096.8000000000002" y="509.59520239880067"/>
         </scene>

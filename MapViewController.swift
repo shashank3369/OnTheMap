@@ -17,6 +17,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         // Do any additional setup after loading the view.
+        
+        setupNavBar()
+    }
+
+    func setupNavBar() {
+        self.parent?.navigationItem.hidesBackButton = true
+        self.parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        self.parent?.navigationItem.title = "On The Map"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinColor = .red
+            pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         else {
@@ -58,7 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.openURL(URL(string: toOpen)!)
+                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
             }
         }
     }
@@ -67,19 +75,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         var annotations = [MKPointAnnotation]()
         for student in studentInfo {
             
-            let lat = CLLocationDegrees(student.latitude)
-            let long = CLLocationDegrees(student.longitude)
+            let annotation = MKPointAnnotation()
+            if let lat = student.latitude, let long = student.longitude {
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                annotation.coordinate = coordinate
+            }
             
             // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
             let first = student.firstName
             let last = student.lastName
             let mediaURL = student.mediaURL
             
             // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
+           
             annotation.title = "\(first) \(last)"
             annotation.subtitle = mediaURL
             
@@ -91,5 +99,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.addAnnotations(annotations)
     }
     
+    func logout () {
+        OTMClient.sharedInstance().deleteSession { (success, error) in
+            guard error == nil else {
+                
+                return
+            }
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+            }
+        }
+    }
 
 }
