@@ -18,7 +18,7 @@ class OTMClient: NSObject {
     }
     
     // MARK: POST
-    func taskForPOSTMethod(_ username: String, _ password: String, completionHandlerForPOST: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
+    func login(_ username: String, _ password: String, completionHandlerForPOST: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")! )
         request.httpMethod = "POST"
@@ -38,7 +38,7 @@ class OTMClient: NSObject {
                 return
             }
             
-            self.convertDataWithCompletionHandler(data!, completionHandlerForConvertData: completionHandlerForPOST)
+            self.convertLoginDataWithCompletionHandler(data!, completionHandlerForConvertData: completionHandlerForPOST)
         }
         task.resume()
     }
@@ -89,18 +89,28 @@ class OTMClient: NSObject {
         task.resume()
     }
     
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ success: Bool, _ error: NSError?) -> Void) {
+    private func convertLoginDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ success: Bool, _ error: NSError?) -> Void) {
         
         let dataLength = data.count
         let r = 5...Int(dataLength)
         let newData = data.subdata(in: Range(r)) /* subset response data! */
         let resultString = NSString(data: newData, encoding: String.Encoding.utf8.rawValue)
         let result = convertStringToDictionary(text: resultString as! String)
-        guard (result?["status"]) != nil else {
-            completionHandlerForConvertData(true, nil)
+        guard (result?["status"]) == nil else {
+            completionHandlerForConvertData(false, nil)
             return
         }
-        completionHandlerForConvertData(false, nil)
+        guard let userInfo = result?["account"] as? [String: AnyObject] else {
+            completionHandlerForConvertData(false,nil)
+            return
+        }
+        if let userID = userInfo["key"] as? String  {
+            User.sharedInstance().userId = userID
+        }else {
+            completionHandlerForConvertData(false,nil)
+            return
+        }
+        completionHandlerForConvertData(true, nil)
     }
     
     func convertStringToDictionary(text: String) -> [String:AnyObject]? {
@@ -112,6 +122,30 @@ class OTMClient: NSObject {
             }
         }
         return nil
+    }
+    
+    func getUserData(completionHandlerForGet: @escaping (_ firstName: String?, _ lastName: String?, _ error: NSError?) -> Void){
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(User.sharedInstance().userId!)")!)
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            let range = Range(uncheckedBounds: (5, data!.count - 5))
+            let newData = data?.subdata(in: range) /* subset response data! */
+            let resultString = NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!
+            let result = self.convertStringToDictionary(text: resultString as String)
+            if let userInfo = result?["user"] as? [String: AnyObject]{
+                if let firstName = userInfo["first"] as? String, let lastName = userInfo["last"] as? String {
+                        completionHandlerForGet(firstName, lastName, nil)
+                }
+                else {
+                    completionHandlerForGet(nil,nil,error as NSError?)
+                }
+            }else {
+                completionHandlerForGet(nil,nil,error as NSError?)
+            }
+        }
+        task.resume()
     }
     
     class func sharedInstance() -> OTMClient {

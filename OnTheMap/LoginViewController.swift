@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginWithUdacity(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             loginActivityIndicator.startAnimating()
-            OTMClient.sharedInstance().taskForPOSTMethod(email, password) {(success, error) in
+            OTMClient.sharedInstance().login(email, password) {(success, error) in
                 guard error == nil else {
                     self.displayAlert("Please make sure you are connected to internet before you proceed.")
                     return

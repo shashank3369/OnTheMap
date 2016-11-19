@@ -121,7 +121,7 @@ class ListTableViewController: UITableViewController {
     }
     
     func addStudent() {
-        
+        self.performSegue(withIdentifier: "addStudentIntoFromList", sender: self)
     }
     
     func showError(errorString: String) {
@@ -136,4 +136,6 @@ class ListTableViewController: UITableViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func unwindToList(segue: UIStoryboardSegue) {}
 }

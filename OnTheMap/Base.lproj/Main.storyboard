@@ -158,12 +158,49 @@
                     <connections>
                         <outlet property="mapView" destination="Ewr-0m-P4X" id="4hM-ce-MbU"/>
                         <segue destination="B3H-6F-G0p" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="CrF-D7-Cbv"/>
+                        <segue destination="UZq-D1-fyR" kind="presentation" identifier="addStudentInfoFromMap" id="CGQ-LC-nZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bdh-6G-M23" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="B3H-6F-G0p" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3096.8000000000002" y="-172.26386806596702"/>
+        </scene>
+        <!--Information Posting View Controller-->
+        <scene sceneID="Lym-a8-PNb">
+            <objects>
+                <viewController id="UZq-D1-fyR" customClass="InformationPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VEL-C1-dEL"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Ub-uy-I7c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fhl-0B-V6D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sB-yW-Af7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="kdc-bF-Kut"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7sB-yW-Af7" firstAttribute="leading" secondItem="Fhl-0B-V6D" secondAttribute="leading" id="IUN-IE-qir"/>
+                            <constraint firstAttribute="trailing" secondItem="7sB-yW-Af7" secondAttribute="trailing" id="iG0-Cb-NHf"/>
+                            <constraint firstItem="7sB-yW-Af7" firstAttribute="top" secondItem="Fhl-0B-V6D" secondAttribute="top" id="z8D-b4-g0E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="nOY-Jc-agG" kind="unwind" unwindAction="unwindToListWithSegue:" id="dnn-E1-LKo"/>
+                        <segue destination="nOY-Jc-agG" kind="unwind" unwindAction="unwindToMapWithSegue:" id="DoD-aB-XYS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVf-eU-BXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nOY-Jc-agG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4115" y="-37"/>
         </scene>
         <!--List-->
         <scene sceneID="D1B-b2-Lil">
@@ -178,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUS-aP-Jz8" id="PUB-Dd-J8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Eb0-1H-RM2">
@@ -217,12 +254,13 @@
                     <tabBarItem key="tabBarItem" title="List" image="list" selectedImage="list" id="Kqq-tu-spp"/>
                     <connections>
                         <segue destination="sKE-Is-xdi" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="Br0-mt-0TB"/>
+                        <segue destination="UZq-D1-fyR" kind="presentation" identifier="addStudentInfoFromList" id="kYx-e1-LQy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvb-v9-Zk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sKE-Is-xdi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3096.8000000000002" y="509.59520239880067"/>
+            <point key="canvasLocation" x="3116" y="719"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Nd-mI-VH1">
@@ -269,4 +307,7 @@
         <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CGQ-LC-nZg"/>
+    </inferredMetricsTieBreakers>
 </document>

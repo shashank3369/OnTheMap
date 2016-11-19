@@ -143,6 +143,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func addStudent() {
-        
+        self.performSegue(withIdentifier: "addStudentInfoFromMap", sender: self)
     }
+    
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) {}
 }

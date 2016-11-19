@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A1EA45F1DE010CD00E5469C /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA45E1DE010CD00E5469C /* InformationPostingViewController.swift */; };
+		8A1EA4611DE012E800E5469C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1EA4601DE012E800E5469C /* User.swift */; };
 		8A1F5C571DD8F20F0066A085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C561DD8F20F0066A085 /* AppDelegate.swift */; };
 		8A1F5C591DD8F20F0066A085 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F5C581DD8F20F0066A085 /* LoginViewController.swift */; };
 		8A1F5C5C1DD8F20F0066A085 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1F5C5A1DD8F20F0066A085 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A1EA45E1DE010CD00E5469C /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		8A1EA4601DE012E800E5469C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8A1F5C531DD8F20F0066A085 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A1F5C561DD8F20F0066A085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A1F5C581DD8F20F0066A085 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				8ABCD5991DDACF0A007CB893 /* StudentInformation.swift */,
 				8A1F5C881DD968D50066A085 /* OTMConstants.swift */,
 				8A1F5C861DD968CA0066A085 /* OTMClient.swift */,
+				8A1EA4601DE012E800E5469C /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 		8A1F5C8D1DD978390066A085 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8A1EA45E1DE010CD00E5469C /* InformationPostingViewController.swift */,
 				8ABCD59D1DDAD575007CB893 /* ListTableViewController.swift */,
 				8ABCD59B1DDAD2DE007CB893 /* MapViewController.swift */,
 				8A1F5C581DD8F20F0066A085 /* LoginViewController.swift */,
@@ -321,9 +327,11 @@
 				8ABCD59E1DDAD575007CB893 /* ListTableViewController.swift in Sources */,
 				8A1F5C591DD8F20F0066A085 /* LoginViewController.swift in Sources */,
 				8A96D3391DDD60F00011AE48 /* ListTableViewCell.swift in Sources */,
+				8A1EA45F1DE010CD00E5469C /* InformationPostingViewController.swift in Sources */,
 				8A1F5C891DD968D50066A085 /* OTMConstants.swift in Sources */,
 				8A1F5C571DD8F20F0066A085 /* AppDelegate.swift in Sources */,
 				8ABCD59C1DDAD2DE007CB893 /* MapViewController.swift in Sources */,
+				8A1EA4611DE012E800E5469C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
