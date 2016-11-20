@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/ListTableViewController.swift"
-            timestampString = "501138813.970559"
+            filePath = "OnTheMap/InformationPostingViewController.swift"
+            timestampString = "501366480.886585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "postToWS(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/OTMClient.swift"
-            timestampString = "501226841.412146"
+            timestampString = "501366500.210914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "convertLoginDataWithCompletionHandler(_:completionHandlerForConvertData:)"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "postStudentLocation(completionHandlerForPost:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -16,7 +16,7 @@ class ListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         OTMClient.sharedInstance().getStudentInfo() {(studentInfo, error) in
             guard error == nil else {
-                self.showError(errorString: "Cannot load student information.")
+                self.showError(errorString: "Not able to load student information.")
                 return
             }
             self.studentList = studentInfo

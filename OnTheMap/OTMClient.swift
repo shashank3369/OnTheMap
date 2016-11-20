@@ -12,7 +12,7 @@ import UIKit
 class OTMClient: NSObject {
     // shared session
     var session = URLSession.shared
-    
+    var user = User.sharedInstance()
     override init() {
         super.init()
     }
@@ -148,10 +148,31 @@ class OTMClient: NSObject {
         task.resume()
     }
     
+    
+    func postStudentLocation(completionHandlerForPost: @escaping (_ success: Bool?, _ error: NSError?) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        request.httpMethod = "POST"
+        request.addValue(OTMClient.ParameterValues.ApplicationID, forHTTPHeaderField: OTMClient.ParameterKeys.ApplicationID)
+        request.addValue(OTMClient.ParameterValues.ApiKey, forHTTPHeaderField: OTMClient.ParameterKeys.ApiKey)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"uniqueKey\": \(user.userId), \"firstName\": \(user.firstName), \"lastName\": \(user.lastName),\"mapString\": \(user.mapString), \"mediaURL\": \(user.mediaURL),\"latitude\": \(user.latitude), \"longitude\": \(user.longitude)}".data(using: String.Encoding.utf8)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error…
+                completionHandlerForPost(false, error as? NSError)
+                return
+            }
+            completionHandlerForPost(true, nil)
+        }
+        task.resume()
+    }
+    
     class func sharedInstance() -> OTMClient {
         struct Singleton {
             static var sharedInstance = OTMClient()
         }
         return Singleton.sharedInstance
     }
+    
+    
 }

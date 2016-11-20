@@ -7,11 +7,17 @@
 //
 
 import Foundation
-
+import MapKit
 
 class User: NSObject {
     
     var userId: String?
+    var firstName: String?
+    var lastName: String?
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
+    var mapString: String?
+    var mediaURL: String?
     
     override init() {
         super.init()

@@ -245,13 +245,21 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="postToWS:" destination="UZq-D1-fyR" eventType="touchUpInside" id="bYd-jr-XaC"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="x9t-aG-HQK">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jRo-x1-5AL" firstAttribute="leading" secondItem="vnh-8m-V0o" secondAttribute="leading" id="06c-8H-9LZ"/>
                             <constraint firstItem="EOZ-w3-TfY" firstAttribute="trailing" secondItem="vnh-8m-V0o" secondAttribute="trailing" id="1eA-EK-D6k"/>
                             <constraint firstItem="OJt-QJ-4Do" firstAttribute="leading" secondItem="jRo-x1-5AL" secondAttribute="leading" id="4RQ-uq-8Ub"/>
+                            <constraint firstItem="x9t-aG-HQK" firstAttribute="centerY" secondItem="Fhl-0B-V6D" secondAttribute="centerY" id="Bbn-fh-pz1"/>
                             <constraint firstItem="jRo-x1-5AL" firstAttribute="top" secondItem="VEL-C1-dEL" secondAttribute="bottom" id="CoC-4H-C1Z"/>
                             <constraint firstItem="OJt-QJ-4Do" firstAttribute="top" secondItem="jRo-x1-5AL" secondAttribute="top" id="Duh-cI-hAQ"/>
                             <constraint firstItem="6Ub-uy-I7c" firstAttribute="top" secondItem="vnh-8m-V0o" secondAttribute="bottom" constant="126" id="G4u-3A-kd3"/>
@@ -266,6 +274,7 @@
                             <constraint firstItem="EOZ-w3-TfY" firstAttribute="leading" secondItem="vnh-8m-V0o" secondAttribute="leading" id="hrq-yD-pun"/>
                             <constraint firstItem="vnh-8m-V0o" firstAttribute="top" secondItem="OJt-QJ-4Do" secondAttribute="bottom" constant="72" id="pCO-Qm-aiF"/>
                             <constraint firstAttribute="bottomMargin" secondItem="EOZ-w3-TfY" secondAttribute="bottom" constant="-2" id="paz-Ws-eHc"/>
+                            <constraint firstItem="x9t-aG-HQK" firstAttribute="centerX" secondItem="vnh-8m-V0o" secondAttribute="centerX" id="pb6-nB-oXa"/>
                             <constraint firstAttribute="trailing" secondItem="jRo-x1-5AL" secondAttribute="trailing" id="qes-xj-L4L"/>
                             <constraint firstItem="EOZ-w3-TfY" firstAttribute="top" secondItem="vnh-8m-V0o" secondAttribute="bottom" id="tNT-pn-c5N"/>
                             <constraint firstItem="vnh-8m-V0o" firstAttribute="top" secondItem="jRo-x1-5AL" secondAttribute="bottom" id="vgj-nK-oDq"/>
@@ -280,6 +289,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="x9t-aG-HQK" id="XbY-Cu-ajb"/>
                         <outlet property="bottomView" destination="EOZ-w3-TfY" id="h7B-wF-Fjj"/>
                         <outlet property="cancelButton" destination="zJh-iq-LpL" id="D4G-hS-oXP"/>
                         <outlet property="linkTextView" destination="OJt-QJ-4Do" id="gTw-0F-4TF"/>
@@ -310,7 +320,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUS-aP-Jz8" id="PUB-Dd-J8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Eb0-1H-RM2">
