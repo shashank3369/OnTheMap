@@ -87,14 +87,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
             // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let first = student.firstName
-            let last = student.lastName
-            let mediaURL = student.mediaURL
+            if let firstName = student.firstName, let lastName = student.lastName, let mURL = student.mediaURL {
+                // Here we create the annotation and set its coordiate, title, and subtitle properties
+                annotation.title = "\(firstName) \(lastName)"
+                annotation.subtitle = mURL
+            }
             
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
-           
-            annotation.title = "\(first) \(last)"
-            annotation.subtitle = mediaURL
+            
             
             // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)

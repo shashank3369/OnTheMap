@@ -130,12 +130,14 @@ class OTMClient: NSObject {
             if error != nil { // Handle error...
                 return
             }
-            let range = Range(uncheckedBounds: (5, data!.count - 5))
-            let newData = data?.subdata(in: range) /* subset response data! */
-            let resultString = NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!
-            let result = self.convertStringToDictionary(text: resultString as String)
+            let dataLength = data?.count
+            let r = 5...Int(dataLength!)
+            let newData = data?.subdata(in: Range(r)) /* subset response data! */
+            let resultString = NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)
+            let result = self.convertStringToDictionary(text: resultString as! String)
             if let userInfo = result?["user"] as? [String: AnyObject]{
-                if let firstName = userInfo["first"] as? String, let lastName = userInfo["last"] as? String {
+                if let firstName = userInfo["first_name"] as? String, let lastName = userInfo["last_name"] as? String {
+                        print(firstName, lastName)
                         completionHandlerForGet(firstName, lastName, nil)
                 }
                 else {
@@ -150,18 +152,33 @@ class OTMClient: NSObject {
     
     
     func postStudentLocation(completionHandlerForPost: @escaping (_ success: Bool?, _ error: NSError?) -> Void) {
+        let body : [String:AnyObject] = [ "firstName" : User.sharedInstance().firstName! as AnyObject,
+                                          "lastName" : User.sharedInstance().lastName! as AnyObject,
+                                          "latitude" : User.sharedInstance().latitude as AnyObject,
+                                          "longitude" : User.sharedInstance().longitude as AnyObject,
+                                          "mapString" : User.sharedInstance().mapString as AnyObject,
+                                          "mediaURL" : User.sharedInstance().mediaURL as AnyObject,
+                                          "uniqueKey" : User.sharedInstance().userId as AnyObject
+        ]
         let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
         request.httpMethod = "POST"
         request.addValue(OTMClient.ParameterValues.ApplicationID, forHTTPHeaderField: OTMClient.ParameterKeys.ApplicationID)
         request.addValue(OTMClient.ParameterValues.ApiKey, forHTTPHeaderField: OTMClient.ParameterKeys.ApiKey)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \(user.userId), \"firstName\": \(user.firstName), \"lastName\": \(user.lastName),\"mapString\": \(user.mapString), \"mediaURL\": \(user.mediaURL),\"latitude\": \(user.latitude), \"longitude\": \(user.longitude)}".data(using: String.Encoding.utf8)
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        }
+        catch {
+            completionHandlerForPost(false, NSError())
+        }
+
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error…
                 completionHandlerForPost(false, error as? NSError)
                 return
             }
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
             completionHandlerForPost(true, nil)
         }
         task.resume()

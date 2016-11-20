@@ -29,6 +29,12 @@ class InformationPostingViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        OTMClient.sharedInstance().getUserData { (firstName, lastName, error) in
+            if (error == nil) {
+                self.firstName = firstName
+                self.lastName = lastName
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -97,6 +103,8 @@ class InformationPostingViewController: UIViewController {
     @IBAction func postToWS(_ sender: Any) {
         if (linkTextView.text.characters.count != 0) {
             User.sharedInstance().mediaURL = linkTextView.text
+            User.sharedInstance().firstName = self.firstName
+            User.sharedInstance().lastName = self.lastName
             OTMClient.sharedInstance().postStudentLocation { (success, error) in
                 guard error == nil else {
                     self.showError(errorString: "Wasn't able to post your information")
