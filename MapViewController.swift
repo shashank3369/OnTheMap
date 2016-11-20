@@ -129,6 +129,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addStudentInfoFromMap" {
+            let destinationNav = segue.destination as! UINavigationController
+            let destinationVC = destinationNav.topViewController as! InformationPostingViewController
+            destinationVC.identifiyingProperty = "map"
+        }
+    }
+    
     func showError(errorString: String) {
         let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .alert)
         

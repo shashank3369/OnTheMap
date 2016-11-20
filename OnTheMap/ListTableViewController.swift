@@ -121,7 +121,15 @@ class ListTableViewController: UITableViewController {
     }
     
     func addStudent() {
-        self.performSegue(withIdentifier: "addStudentIntoFromList", sender: self)
+        self.performSegue(withIdentifier: "addStudentInfoFromList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addStudentInfoFromList" {
+            let destinationNav = segue.destination as! UINavigationController
+            let destinationVC = destinationNav.topViewController as! InformationPostingViewController
+            destinationVC.identifiyingProperty = "list"
+        }
     }
     
     func showError(errorString: String) {
