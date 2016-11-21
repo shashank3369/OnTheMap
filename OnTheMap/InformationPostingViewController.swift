@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-class InformationPostingViewController: UIViewController {
+class InformationPostingViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bottomView: UIView!
@@ -22,6 +22,8 @@ class InformationPostingViewController: UIViewController {
     var firstName: String?
     var lastName: String?
     override func viewDidLoad() {
+        locationTextView.delegate = self
+        linkTextView.delegate = self
         super.viewDidLoad()
         linkTextView.isHidden = true
         mapView.isHidden = true
@@ -36,6 +38,14 @@ class InformationPostingViewController: UIViewController {
             }
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     @IBAction func checkLocation(_ sender: Any) {

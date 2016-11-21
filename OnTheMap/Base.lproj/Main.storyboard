@@ -49,7 +49,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrB-I9-LVM" customClass="CredentialTextField" customModule="OnTheMap" customModuleProvider="target">
+                            <textField clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nrB-I9-LVM" customClass="CredentialTextField" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="16" y="275" width="343" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.58823529411764708" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +92,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3bw-FD-SUN" firstAttribute="top" secondItem="6kc-6F-OVb" secondAttribute="bottom" constant="10" id="0UD-LN-QhY"/>
                             <constraint firstItem="7pD-QZ-eqY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="0da-63-81S"/>

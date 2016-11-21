@@ -15,18 +15,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: CredentialTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         configureBackground()
         loginActivityIndicator.hidesWhenStopped = true
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loginActivityIndicator.stopAnimating()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        emailTextField.text = ""
+        emailTextField.placeholder = "Email"
+        passwordTextField.text = ""
+        passwordTextField.placeholder = "Password"
     }
 
     @IBAction func loginWithUdacity(_ sender: Any) {
@@ -51,31 +55,12 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
-}
-
-private extension LoginViewController {
-    func configureBackground() {
-        let backgroundGradient = CAGradientLayer()
-        let colorTop = UIColor(red: 0.925, green: 0.435, blue: 0.4, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 0.953, green: 0.631, blue: 0.514, alpha: 1.0).cgColor
-        backgroundGradient.colors = [colorTop, colorBottom]
-        backgroundGradient.frame = view.bounds
-        view.layer.insertSublayer(backgroundGradient, at: 0)
-    }
-    
-    func displayAlert(_ errorString: String) {
-        let alertController = UIAlertController(title: "Message", message: errorString, preferredStyle: .alert)
-    
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        
-        DispatchQueue.main.async {
-            self.loginActivityIndicator.stopAnimating()
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
 }
 
