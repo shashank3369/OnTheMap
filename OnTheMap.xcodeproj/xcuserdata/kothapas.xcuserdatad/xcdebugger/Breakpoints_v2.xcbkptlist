@@ -10,108 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/InformationPostingViewController.swift"
-            timestampString = "501392691.155067"
+            timestampString = "501699541.943108"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "postToWS(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OnTheMap/OTMClient.swift"
-            timestampString = "501369916.870717"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "postStudentLocation(completionHandlerForPost:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OnTheMap/OTMClient.swift"
-            timestampString = "501368096.328418"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "getUserData(completionHandlerForGet:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OnTheMap/OTMClient.swift"
-            timestampString = "501368096.328418"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "getUserData(completionHandlerForGet:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OnTheMap.OTMClient.(getUserData (completionHandlerForGet : (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "OnTheMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kothapas/Documents/OnTheMap/OnTheMap/OTMClient.swift"
-                  timestampString = "501392513.47677"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "1908">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OnTheMap.OTMClient.(getUserData (completionHandlerForGet : (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "OnTheMap"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kothapas/Documents/OnTheMap/OnTheMap/OTMClient.swift"
-                  timestampString = "501392513.478005"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "2416">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OnTheMap/OTMClient.swift"
-            timestampString = "501369916.870717"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "postStudentLocation(completionHandlerForPost:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,12 +58,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kothapas/Documents/OnTheMap/OnTheMap/ListTableViewController.swift"
-                  timestampString = "501392513.486063"
+                  timestampString = "501699822.203701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
                   endingLineNumber = "95"
-                  offsetFromSymbolStart = "731">
+                  offsetFromSymbolStart = "764">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -169,12 +73,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kothapas/Documents/OnTheMap/OnTheMap/ListTableViewController.swift"
-                  timestampString = "501392513.487292"
+                  timestampString = "501699822.204935"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
                   endingLineNumber = "95"
-                  offsetFromSymbolStart = "815">
+                  offsetFromSymbolStart = "848">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,12 +106,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kothapas/Documents/OnTheMap/OnTheMap/ListTableViewController.swift"
-                  timestampString = "501392513.490099"
+                  timestampString = "501699822.207392"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
                   endingLineNumber = "95"
-                  offsetFromSymbolStart = "731">
+                  offsetFromSymbolStart = "764">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -217,12 +121,12 @@
                   moduleName = "OnTheMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kothapas/Documents/OnTheMap/OnTheMap/ListTableViewController.swift"
-                  timestampString = "501392513.491319"
+                  timestampString = "501699822.208598"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
                   endingLineNumber = "95"
-                  offsetFromSymbolStart = "815">
+                  offsetFromSymbolStart = "848">
                </Location>
             </Locations>
          </BreakpointContent>

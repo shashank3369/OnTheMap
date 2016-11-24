@@ -27,7 +27,6 @@ class OTMClient: NSObject {
         request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             func sendError(_ error: String) {
-                print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForPOST(false, NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
             }
@@ -137,8 +136,7 @@ class OTMClient: NSObject {
             let result = self.convertStringToDictionary(text: resultString as! String)
             if let userInfo = result?["user"] as? [String: AnyObject]{
                 if let firstName = userInfo["first_name"] as? String, let lastName = userInfo["last_name"] as? String {
-                        print(firstName, lastName)
-                        completionHandlerForGet(firstName, lastName, nil)
+                    completionHandlerForGet(firstName, lastName, nil)
                 }
                 else {
                     completionHandlerForGet(nil,nil,error as NSError?)
@@ -178,7 +176,6 @@ class OTMClient: NSObject {
                 completionHandlerForPost(false, error as? NSError)
                 return
             }
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue)!)
             completionHandlerForPost(true, nil)
         }
         task.resume()

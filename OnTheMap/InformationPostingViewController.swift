@@ -21,9 +21,10 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
     var identifiyingProperty: String?
     var firstName: String?
     var lastName: String?
+    
+    let textViewDelegate = TextViewDelegate()
+    
     override func viewDidLoad() {
-        locationTextView.delegate = self
-        linkTextView.delegate = self
         super.viewDidLoad()
         linkTextView.isHidden = true
         mapView.isHidden = true
@@ -40,13 +41,23 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        OTMClient.sharedInstance().getUserData { (firstName, lastName, error) in
+            if (error == nil) {
+                self.firstName = firstName
+                self.lastName = lastName
+            }
         }
-        return true
+        subscribeToKeyboardNotifications()
+        prepareTextView()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeToKeyboardNotifications()
+    }
+    
     
     @IBAction func checkLocation(_ sender: Any) {
         activityIndicator.startAnimating()
@@ -89,14 +100,6 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        OTMClient.sharedInstance().getUserData { (firstName, lastName, error) in
-            if (error == nil) {
-                self.firstName = firstName
-                self.lastName = lastName
-            }
-        }
-    }
     
     @IBAction func goBack(_ sender: Any) {
         if identifiyingProperty == "map" {

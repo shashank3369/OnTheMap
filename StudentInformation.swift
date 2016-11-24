@@ -13,14 +13,14 @@ struct StudentInformation {
     
     static var allStudentInformation: [StudentInformation] = []
     
-    var objectId: String?
-    var uniqueKey: String?
-    var firstName: String?
-    var lastName: String?
-    var mapString: String?
-    var mediaURL: String?
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
+    let objectId: String?
+    let uniqueKey: String?
+    let firstName: String?
+    let lastName: String?
+    let mapString: String?
+    let mediaURL: String?
+    let latitude: CLLocationDegrees?
+    let longitude: CLLocationDegrees?
     
     /* Initial a student information from dictionary */
     init(dictionary: [String : AnyObject]) {
