@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
         loginActivityIndicator.stopAnimating()
         emailTextField.text = ""
         emailTextField.placeholder = "Email"
@@ -33,6 +34,11 @@ class LoginViewController: UIViewController {
         passwordTextField.placeholder = "Password"
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeToKeyboardNotifications()
+    }
+    
     @IBAction func loginWithUdacity(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             loginActivityIndicator.startAnimating()
@@ -55,12 +61,16 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        view.layer.sublayers?[0].frame = view.bounds
+    }
+    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
+
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
 }
 

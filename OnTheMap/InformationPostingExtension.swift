@@ -10,13 +10,6 @@ import Foundation
 import UIKit
 
 extension InformationPostingViewController {
-    
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardHeight = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardHeight.cgRectValue.height
-    }
-    
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -29,7 +22,7 @@ extension InformationPostingViewController {
     
     func keyboardWillShow(notification: NSNotification) {
         if locationTextView.isFirstResponder {
-            view.frame.origin.y =  -getKeyboardHeight(notification: notification)
+            view.frame.origin.y =  -view.frame.height/4
         }
     }
     

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension LoginViewController: UITextFieldDelegate {
+    
     func configureBackground() {
         let backgroundGradient = CAGradientLayer()
         let colorTop = UIColor(red: 0.925, green: 0.435, blue: 0.4, alpha: 1.0).cgColor
@@ -51,4 +52,29 @@ extension LoginViewController: UITextFieldDelegate {
         return false
     }
 
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardHeight = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardHeight.cgRectValue.height-30
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if emailTextField.isFirstResponder || passwordTextField.isFirstResponder {
+            view.frame.origin.y =  -getKeyboardHeight(notification: notification)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
 }
