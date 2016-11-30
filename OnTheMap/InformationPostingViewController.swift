@@ -11,25 +11,24 @@ import MapKit
 class InformationPostingViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var firstStackView: UIStackView!
+    @IBOutlet weak var secondStackView: UIStackView!
+
     @IBOutlet weak var locationTextView: UITextView!
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var linkTextView: UITextView!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     var identifiyingProperty: String?
     var firstName: String?
     var lastName: String?
+    @IBOutlet weak var submitButton: UIButton!
     
     let textViewDelegate = TextViewDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        linkTextView.isHidden = true
-        mapView.isHidden = true
-        submitButton.isHidden = true
-        activityIndicator.hidesWhenStopped = true
+        secondStackView.isHidden = true
+//        activityIndicator.hidesWhenStopped = true
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         OTMClient.sharedInstance().getUserData { (firstName, lastName, error) in
@@ -60,11 +59,11 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func checkLocation(_ sender: Any) {
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         if (locationTextView.text.characters.count != 0) {
         CLGeocoder().geocodeAddressString(locationTextView.text, completionHandler: { (placemarks, error) in
                 if error != nil {
-                    self.activityIndicator.stopAnimating()
+                    //self.activityIndicator.stopAnimating()
                     self.showError(errorString: "Not able to geocode address string. Please enter another one.")
                     return
                 }
@@ -75,14 +74,12 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
                     User.sharedInstance().latitude = coordinate?.latitude
                     User.sharedInstance().longitude = coordinate?.longitude
                     User.sharedInstance().mapString = self.locationTextView.text
-                    self.centerOnLocation(coordinate!)
-                    self.activityIndicator.stopAnimating()
-                    self.linkTextView.isHidden = false
-                    self.mapView.isHidden = false
-                    self.submitButton.isHidden = false
-                    self.bottomView.isHidden = true
-                    self.questionLabel.isHidden = true
-                    
+                    //self.activityIndicator.stopAnimating()
+                    DispatchQueue.main.async {
+                        self.centerOnLocation(coordinate!)
+                        self.firstStackView.isHidden = true
+                        self.secondStackView.isHidden = false
+                    }
                 }
             })
         }
@@ -112,7 +109,6 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-    
     @IBAction func postToWS(_ sender: Any) {
         if (linkTextView.text.characters.count != 0) {
             User.sharedInstance().mediaURL = linkTextView.text
@@ -123,7 +119,7 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
                     self.showError(errorString: "Wasn't able to post your information")
                     return
                 }
-                if (success)! {
+                if (success == true) {
                     self.goBack(self)
                 }
             }
@@ -131,8 +127,9 @@ class InformationPostingViewController: UIViewController, UITextViewDelegate {
         else {
             showError(errorString: "Please enter a URL")
         }
+
     }
-    
+
     func showError(errorString: String) {
         let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .alert)
         

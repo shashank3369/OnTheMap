@@ -38,7 +38,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             self.studentList = studentInfo
-            self.loadAnnotations(self.studentList!)
+            DispatchQueue.main.async {
+                self.loadAnnotations(self.studentList!)
+            }
         }
     }
     
