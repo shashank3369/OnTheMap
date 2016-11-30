@@ -25,8 +25,8 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4XO-r4-l7B">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                             </activityIndicatorView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="czz-rO-wJP" userLabel="Main Stack View">
-                                <rect key="frame" x="16" y="10" width="343" height="360"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="czz-rO-wJP" userLabel="Main Stack View">
+                                <rect key="frame" x="16" y="158.5" width="343" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="h0L-iO-Zbn" userLabel="Header Stack View">
                                         <rect key="frame" x="111.5" y="0.0" width="120" height="120"/>
@@ -43,7 +43,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gHh-R7-3RJ" userLabel="Body">
-                                        <rect key="frame" x="0.0" y="130" width="343" height="140"/>
+                                        <rect key="frame" x="0.0" y="125" width="343" height="140"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-Td-qyM">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -81,7 +81,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fLC-TA-evy" userLabel="Footer Stack View">
-                                        <rect key="frame" x="0.0" y="280" width="343" height="80"/>
+                                        <rect key="frame" x="0.0" y="270" width="343" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kc-6F-OVb">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -102,7 +102,7 @@
                                                     <action selector="loginWithUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yG6-v9-Hkh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bw-FD-SUN">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bw-FD-SUN">
                                                 <rect key="frame" x="0.0" y="40" width="343" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Jlu-js-O97"/>
@@ -129,8 +129,8 @@
                         <constraints>
                             <constraint firstItem="4XO-r4-l7B" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3xF-7l-uK6"/>
                             <constraint firstItem="4XO-r4-l7B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9G8-Qk-OfR"/>
+                            <constraint firstItem="czz-rO-wJP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IPB-Dd-luB"/>
                             <constraint firstItem="czz-rO-wJP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dAt-7t-6Jg"/>
-                            <constraint firstItem="czz-rO-wJP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-10" id="f6B-kl-CFi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="czz-rO-wJP" secondAttribute="trailing" id="kgj-jf-MBR"/>
                         </constraints>
                     </view>
@@ -336,7 +336,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUS-aP-Jz8" id="PUB-Dd-J8F">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Eb0-1H-RM2">
